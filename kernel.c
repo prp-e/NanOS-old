@@ -4,13 +4,13 @@
 #include <stddef.h>
 #include <stdint.h>
 
-//#if defined(__linux__)
-//#error "You're not using a cross compiler"
-//#endif
+#if defined(__linux__)
+#error "You're not using a cross compiler"
+#endif
 
-//#if !defined(__i386__)
-//#error "This kernel needs i386 compatible compiler"
-//#endif
+#if !defined(__i386__)
+#error "This kernel needs i386 compatible compiler"
+#endif
 
 enum vga_color {
  COLOR_BLACK = 0,
