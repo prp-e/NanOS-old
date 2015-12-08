@@ -24,7 +24,7 @@ call kernel_main
 
 cli
 hlt
-Lhang:
+.Lhang:
 jmp .Lhang
 
 .size _start, . - _start
