@@ -95,6 +95,16 @@ void terminal_writestring(const char* data){
   }
 }
 
+void inb(unsigned short port){
+ unsigned char value;
+ asm volatile("inb %w1, %0" : "=a" (value) : "Nd" (port));
+ return value;
+}
+
+void outb(unsigned short port, unsigned char value){
+ asm volatile("outb %b0, %w1" : : "a" (value), "Nd" (port));
+}
+
 #if defined(__cplusplus)
 extern "C"
 #endif
