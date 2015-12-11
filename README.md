@@ -18,3 +18,17 @@ can build Tinix manually, or by using a Makefile.
 ```bash
  nasm -felf32 -o boot.o boot.s
 ```
+###For building the kernel :
+
+Just type this:
+
+```bash
+  i686-elf-gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
+```
+
+###For linking :
+```bash
+  i686-elf-ld linker.ld kernel.o boot.o -o Tinix.bin -shared -Bsymbolic
+```
+Now, you can make a bootable image using `grub-mkrescue` or `mkisofs`, and
+test it using __QEMU__ or __Virtual Box__.
