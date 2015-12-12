@@ -1,5 +1,5 @@
-#Tinix
-Tinix is a minimal operating system written in C and Assembly.
+#NanOS
+NanOS is a minimal operating system written in C and Assembly.
 
 ## How to use?
 First, you need a [GCC Cross Compiler](http://wiki.osdev.org/GCC_Cross-Compiler), then you
@@ -28,7 +28,7 @@ Just type this:
 
 ###For linking :
 ```bash
-  i686-elf-ld linker.ld kernel.o boot.o -o Tinix.bin -shared -Bsymbolic
+  i686-elf-ld linker.ld kernel.o boot.o -o NanOS.bin -shared -Bsymbolic
 ```
 Now, you can make a bootable image using `grub-mkrescue` or `mkisofs`, and
 test it using __QEMU__ or __Virtual Box__.
