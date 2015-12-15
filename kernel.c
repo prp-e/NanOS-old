@@ -171,5 +171,10 @@ extern "C"
 void kernel_main(){
   terminal_initialize();
   terminal_writestring("Hello, World!");
+  while(1){
+    terminal_writestring("Press a key");
+    getchar();
+    terminal_writestring("Key Pressed");
+  }
   
 }
