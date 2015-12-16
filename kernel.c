@@ -93,6 +93,10 @@ void terminal_writestring(const char* data){
   for(size_t i; i < datalen; i++){
     terminal_putchar(data[i]);
   }
+  size_t minus = VGA_WIDTH - datalen;
+  for(size_t j; j < minus; j++){
+    terminal_putchar(' ');
+  }
 }
 
 static inline uint8_t inb(unsigned short port){
@@ -163,18 +167,13 @@ return scancode[getScancode()+1];
 }
 
 
-
 #if defined(__cplusplus)
 extern "C"
 #endif
 
 void kernel_main(){
   terminal_initialize();
-  terminal_writestring("Hello, World!\n");
-  while(1){
-    terminal_writestring("Press a key\n");
-    getchar();
-    terminal_writestring("Key Pressed");
-  }
+  terminal_writestring("Hello, World!");
+  terminal_writestring("NanOS version 0.0.1");
   
 }
