@@ -5,7 +5,7 @@ NanOS is a minimal operating system written in C and Assembly.
 First, you need a [GCC Cross Compiler](http://wiki.osdev.org/GCC_Cross-Compiler), then you
 can build Tinix manually, or by using a Makefile.
 
-###For building bootloader :
+### For building bootloader :
 
 * AT&T Syntax (known as boot-alt.s):
 
@@ -18,7 +18,7 @@ can build Tinix manually, or by using a Makefile.
 ```bash
  nasm -felf32 -o boot.o boot.s
 ```
-###For building the kernel :
+### For building the kernel :
 
 Just type this:
 
@@ -26,7 +26,7 @@ Just type this:
   i686-elf-gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 ```
 
-###For linking :
+### For linking :
 ```bash
   i686-elf-ld linker.ld kernel.o boot.o -o NanOS.bin -shared -Bsymbolic
 ```
