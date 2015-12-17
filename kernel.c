@@ -93,6 +93,13 @@ void terminal_writestring(const char* data){
   for(size_t i; i < datalen; i++){
     terminal_putchar(data[i]);
   }
+}
+
+void terminal_writeln(const char* data){
+  size_t datalen = strlen(data);
+  for(size_t i; i < datalen; i++){
+    terminal_putchar(data[i]);
+  }
   size_t minus = VGA_WIDTH - datalen;
   for(size_t j; j < minus; j++){
     terminal_putchar(' ');
@@ -173,7 +180,7 @@ extern "C"
 
 void kernel_main(){
   terminal_initialize();
-  terminal_writestring("Hello, World!");
-  terminal_writestring("NanOS version 0.0.1");
-  
+  terminal_writeln("Hello, World!");
+  terminal_writeln("NanOS version 0.0.1");
+
 }
