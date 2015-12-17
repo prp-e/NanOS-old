@@ -3,7 +3,7 @@ NanOS is a minimal operating system written in C and Assembly.
 
 ## How to use?
 First, you need a [GCC Cross Compiler](http://wiki.osdev.org/GCC_Cross-Compiler), then you
-can build Tinix manually, or by using a Makefile.
+can build NanoS manually, or by using a Makefile.
 
 ### For building bootloader :
 
