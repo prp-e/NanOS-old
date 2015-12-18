@@ -173,6 +173,15 @@ char getchar()
 return scancode[getScancode()+1];
 }
 
+void update_cursor(int row, int col){
+  unsigned short position = (row*80) + col;
+  outb(0x3D4, 0x0F);
+  outb(0x3D5, (unsigned char)(position&0xFF));
+  outb(0x3D4, 0x0E);
+  outb(0x3D5, (unsigned char )((position>>8)&0xFF));
+
+
+}
 
 #if defined(__cplusplus)
 extern "C"
@@ -182,5 +191,6 @@ void kernel_main(){
   terminal_initialize();
   terminal_writeln("Hello, World!");
   terminal_writeln("NanOS version 0.0.1");
+  update_cursor(2, 0);
 
 }
