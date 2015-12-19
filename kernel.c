@@ -100,8 +100,8 @@ void terminal_writeln(const char* data){
   for(size_t i; i < datalen; i++){
     terminal_putchar(data[i]);
   }
-  size_t minus = VGA_WIDTH - datalen;
-  for(size_t j; j < minus; j++){
+  size_t diff = VGA_WIDTH - datalen;
+  for(size_t j; j < diff; j++){
     terminal_putchar(' ');
   }
 }
