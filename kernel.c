@@ -51,6 +51,7 @@ uint16_t make_vgaentry(char c, uint8_t color) {
  return c16 | color << 8;
 }
 
+/* Get's the */
 size_t strlen(const char* str) {
  size_t ret = 0;
  while(str[ret] != 0)
@@ -79,6 +80,9 @@ void terminal_initialize() {
   }
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *\
+ *                T e r m i n a l    F u n c t i o n s               *
+\* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 void terminal_setcolor(uint8_t color){
   terminal_color = color;
 }
@@ -205,6 +209,8 @@ void update_cursor(int row, int col){
 extern "C"
 #endif
 
+
+/* Where everything starts */
 void kernel_main(){
   terminal_initialize();
   terminal_writeln("Hello, World!");
