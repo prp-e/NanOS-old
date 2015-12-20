@@ -3,15 +3,15 @@
 #endif
 #include <stddef.h>
 #include <stdint.h>
-
+/* Check if the compiler thinks we are targeting the wrong operating system. */
 #if defined(__linux__)
 #error "You're not using a cross compiler"
 #endif
-
+/* This operating system  will only work for the 32-bit ix86 targets. */
 #if !defined(__i386__)
 #error "This kernel needs i386 compatible compiler"
 #endif
-
+/* Hardware text mode color constants. */
 enum vga_color {
  COLOR_BLACK = 0,
  COLOR_BLUE = 1,
@@ -30,7 +30,17 @@ enum vga_color {
  COLOR_LIGHT_BROWN = 14,
  COLOR_WHITE = 15,
 };
-
+/* ُThese Functions :
+make_color : sets color
+make_vga_entry : makes color understandable for VGA
+strlen : calculates length of string
+terminal_initialize : initializes console
+terminal_setcolor : sets terminal background and forgroud color
+terminal_putentryat : makes environment for showing text
+terminal_putchar : prints characters
+terminal_writestring : prints strings, character by character
+terminal_writeln : prints strings, with new line (like puts command)
+*/
 uint8_t make_color(enum vga_color fg, enum vga_color bg){
  return fg | bg <<4;
 }
@@ -106,6 +116,11 @@ void terminal_writeln(const char* data){
   }
 }
 
+/* These Functions :
+inb : Reads keyboard input
+outb : Writes keyboard output, moves cursor
+*/
+
 static inline uint8_t inb(unsigned short port){
  unsigned char value;
  asm volatile("inb %w1, %0" : "=a" (value) : "Nd" (port));
@@ -115,6 +130,8 @@ static inline uint8_t inb(unsigned short port){
 static inline void outb(unsigned short port, unsigned char value){
  asm volatile("outb %b0, %w1" : : "a" (value), "Nd" (port));
 }
+
+/* This is scancode table, all characters are defined for operating system */
 
 unsigned char scancode[128] =
 {
@@ -156,6 +173,7 @@ unsigned char scancode[128] =
     0,    /* All other keys are undefined */
 };
 
+/* This function is used for reading user entry's scancode */
 char getScancode(){
 char c=0;
 do {
@@ -167,12 +185,12 @@ return c;
 }
 }while(1);
 }
-
+/* This function is used for reading user entry */
 char getchar()
 {
 return scancode[getScancode()+1];
 }
-
+/* we change cursor position using this function */
 void update_cursor(int row, int col){
   unsigned short position = (row*80) + col;
   outb(0x3D4, 0x0F);
