@@ -2,6 +2,7 @@ CC = i686-elf-gcc
 ASM = nasm -felf32
 LINKER = i686-elf-ld
 LINKER_FLAGS = -shared -Bsymbolic
+LINKER_INPUT = linker.ld kernel.o boot.o
 FLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 
 
@@ -11,7 +12,7 @@ all:
 	@echo "And Installed nasm"
 	$(CC) -c kernel.c -o kernel.o $(FLAGS)
 	$(ASM) boot.s -o boot.o
-	$(LINKER) linker.ld kernel.o boot.o -o NanOS.bin $(LINKER_FLAGS)
+	$(LINKER)  $(LINKER_INPUT) -o NanOS.bin $(LINKER_FLAGS)
 	@echo "NanOS successfully compiled and liked"
 
 image:
