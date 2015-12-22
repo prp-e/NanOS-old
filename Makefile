@@ -1,10 +1,16 @@
+CC = i686-elf-gcc
+ASM = nasm -felf32
+LINKER = i686-elf-ld
+FLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra
+
+
 all:
 	@echo "Welcome to NanOS build unit"
 	@echo "Make sure you made i686-elf cross compiler"
 	@echo "And Installed nasm"
-	i686-elf-gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
-	nasm -felf32 boot.s -o boot.o
-	i686-elf-ld linker.ld kernel.o boot.o -o NanOS.bin -shared -Bsymbolic
+	$(CC) -c kernel.c -o kernel.o $(FLAGS)
+	$(ASM) boot.s -o boot.o
+	$(LINKER) linker.ld kernel.o boot.o -o NanOS.bin -shared -Bsymbolic
 	@echo "NanOS successfully compiled and liked"
 
 image:
@@ -15,3 +21,7 @@ image:
 emulate:
 	@echo "Make sure you installed QEMU"
 	qemu-system-i386 -cdrom NanOS.iso
+
+clean:
+	rm -rvf *.o
+	@echo "All object files removed!"
