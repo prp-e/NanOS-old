@@ -27,3 +27,5 @@ emulate:
 clean:
 	rm -rvf *.o
 	@echo "All object files removed!"
+	rm -rvf NanOS.iso
+	@echo "Bootable image removed!"
