@@ -11,6 +11,7 @@ all:
 	@echo "Welcome to NanOS build unit"
 	@echo "Make sure you made i686-elf cross compiler"
 	@echo "And Installed nasm"
+	bash -c "PATH=$(HOME)/opt/cross/bin:$(PATH)"
 	$(CC) -c kernel.c -o kernel.o $(FLAGS)
 	$(ASM) boot.s -o boot.o
 	$(LINKER)  $(LINKER_INPUT) -o NanOS.bin $(LINKER_FLAGS)
