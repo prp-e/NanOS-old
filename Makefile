@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 CC = i686-elf-gcc
 ASM = nasm -felf32
 LINKER = i686-elf-ld
