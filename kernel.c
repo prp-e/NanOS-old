@@ -24,6 +24,5 @@ void kernel_main(){
   terminal_initialize();
   terminal_writeln("Hello, World!");
   terminal_writeln("NanOS version 0.0.1");
-  update_cursor(2, 0);
 
 }
