@@ -94,6 +94,8 @@ void terminal_writestring(const char* data){
   for(size_t i; i < datalen; i++){
     terminal_putchar(data[i]);
   }
+  terminal_column = datalen;
+  update_cursor(terminal_row, terminal_column);
 }
 
 void terminal_writeln(const char* data){
