@@ -199,3 +199,11 @@ void update_cursor(int row, int col){
 
 
 }
+
+void prompt(){
+  while(true){
+  terminal_writestring(">> ");
+  char cmd = getchar();
+  terminal_writestring(cmd);
+}
+}
