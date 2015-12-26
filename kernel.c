@@ -25,6 +25,6 @@ void kernel_main(){
   terminal_writeln("Hello, World!");
   terminal_writeln("NanOS version 0.0.1");
   terminal_writeln(" ");
-  prompt();
+  //prompt(); function doesn't work efficiently. 
 
 }
