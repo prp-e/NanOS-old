@@ -201,9 +201,8 @@ void update_cursor(int row, int col){
 }
 
 void prompt(){
-  while(true){
+  char* cmd = getchar();
+  while(cmd != "\n"){
   terminal_writestring(">> ");
-  char cmd = getchar();
-  terminal_writestring(cmd);
 }
 }
