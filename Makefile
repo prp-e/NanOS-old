@@ -14,7 +14,7 @@ all:
 	$(CC) -c kernel.c -o kernel.o $(FLAGS)
 	$(ASM) boot.s -o boot.o
 	$(LINKER)  $(LINKER_INPUT) -o NanOS.bin $(LINKER_FLAGS)
-	@echo "NanOS successfully compiled and liked"
+	@echo "NanOS successfully compiled and linked"
 
 image:
 	mv NanOS.bin cdiso/boot/NanOS.bin
